@@ -2,7 +2,7 @@ library(readxl)
 library(dplyr) #apply filters
 library(tidyverse)#most used library
 
-setwd("C:/Users/aurel/Desktop/Portfolio/Data management projects/SQL configuration table modification")
+setwd("yourpath/SQL configuration table modification")
 
 configPIDI <- readxl::read_xlsx("FA PI DI opti new version.xlsx", sheet="Sheet1")
 
@@ -741,25 +741,25 @@ newPADIconfig$ENDDATE <- '9999-12-31'
 
 
 
-setwd("C:/Users/aurel/Desktop/Portfolio/Data management projects/SQL configuration table modification")
+setwd("yourpath/SQL configuration table modification")
 
-dir.create('Output2')
+dir.create('Output')
 
-setwd("C:/Users/aurel/Desktop/Portfolio/Data management projects/SQL configuration table modification/Output2")
+setwd("yourpath/SQL configuration table modification/Output")
 
 # Save the combined and modified data to a CSV file
-write.csv(newPADIconfig, file = "NEWPIDI2.csv", row.names = FALSE)
+write.csv(newPADIconfig, file = "NEWPIDI.csv", row.names = FALSE)
 
 # Combining both data frames in 1
 COMBINED_FUNCTIONALCAT <- bind_rows(NEWRULEFUNCTIONALCAT9, NEWRULEFUNCTIONALCAT10, NEWRULEFUNCTIONALCAT11, NEWRULEFUNCTIONALCAT19 )
 
 # Write combined data to a CSV file
-write.csv(COMBINED_FUNCTIONALCAT, file = "functionalcat_rule2.csv", row.names = FALSE)
+write.csv(COMBINED_FUNCTIONALCAT, file = "functionalcat_rule.csv", row.names = FALSE)
 
 
 combined_data <- bind_rows(NEWRULEINSTRASSET, NEWRULEINSTRASSET7, NEWRULEINSTRASSET9, NEWRULEINSTRASSET10, NEWRULEINSTRASSET11, NEWRULEINSTRASSET19)
 combined_data <- distinct(combined_data)
 # Write combined data to a CSV file
-write.csv(combined_data, file = "INSTRASSETS_NEWRULE2.csv", row.names = FALSE)
+write.csv(combined_data, file = "INSTRASSETS_NEWRULE.csv", row.names = FALSE)
 
 
